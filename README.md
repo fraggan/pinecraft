@@ -1,4 +1,4 @@
-Forked to keep up with new versions of Minecraft.
+Forked to keep up with new versions of Minecraft Server.
 
 git clone https://github.com/fraggan/pinecraft.git
 
