@@ -1,6 +1,9 @@
 Forked to keep up with new versions of Minecraft.
+
 git clone https://github.com/fraggan/pinecraft.git
+
 cd pinecraft
+
 sudo ./install
 
 #Original creator/Creds
