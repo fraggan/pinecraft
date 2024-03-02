@@ -6,7 +6,7 @@
 
 # Corresponding video series: https://category5.tv/feature/minecraft
 
-pcver="3.8"
+pcver="3.9"
 
 if [[ $EUID -ne 0 ]]; then
   echo "ERROR: This script must be run as root" 2>&1
@@ -72,30 +72,15 @@ fi
 
 dialog --title "Pinecraft Installer $pcver" \
 --msgbox "
-
-       Play on our high-performance
-             Minecraft servers!
-
-       https://patreon.com/Pinecraft
-
-" 12 48
-
-
-
-dialog --title "Pinecraft Installer $pcver" \
---msgbox "
  Pinecraft: The Minecraft Server Installer
       For Raspberry Pi and Other SBCs
 
-    By Robbie Ferguson // The Bald Nerd
+    Orignial Created By Robbie Ferguson // The Bald Nerd
   https://category5.tv/feature/minecraft
 
          Installer Version: $pcver
-
-         Sponsored by ameriDroid
-         https://ameridroid.com/
+         
 " 16 48
-
 
 
 dialog --infobox "Checking dependencies..." 3 34 ; sleep 2
@@ -533,7 +518,9 @@ if [[ $? == 0 ]]; then
     R)
       # https://files.minecraftforge.net/net/minecraftforge/forge/
       flavor="Forge"
-      if [[ $mcver == "1.20.2" ]]; then
+      if [[ $mcver == "1.20.4" ]]; then
+        url="https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.4-49.0.31/forge-1.20.4-49.0.31-installer.jar"
+      elif [[ $mcver == "1.20.2" ]]; then
         url="https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.2-48.0.23/forge-1.20.2-48.0.23-installer.jar"
       elif [[ $mcver == "1.20.1" ]]; then
         url="https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.1/forge-1.20.1-47.2.1-installer.jar"
@@ -568,7 +555,9 @@ if [[ $? == 0 ]]; then
     P)
       # https://papermc.io/downloads
       flavor="Paper"
-      if [[ $mcver == "1.20.2" ]]; then
+      if [[ $mcver == "1.20.4" ]]; then
+        url="https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/317/downloads/paper-1.20.2-317.jar"      
+      elif [[ $mcver == "1.20.2" ]]; then
         url="https://api.papermc.io/v2/projects/paper/versions/1.20.2/builds/233/downloads/paper-1.20.2-233.jar"
       elif [[ $mcver == "1.20.1" ]]; then
         url="https://api.papermc.io/v2/projects/paper/versions/1.20.1/builds/196/downloads/paper-1.20.1-196.jar"
@@ -1062,7 +1051,7 @@ fi
 # Create the safe reboot script
 echo '#!/bin/bash
 if [[ $EUID -ne 0 ]]; then
-  echo "ERROR: This script must be run as root" 2>&1
+  echo "ERROR: This script must be run as/with root/sudo" 2>&1
   exit 1
 fi
 su - $user -c "'${instdir}'stop"
